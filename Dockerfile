@@ -7,4 +7,5 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 RUN bundle install --binstubs
 
+RUN rm -f tmp/pids/server.pid
 CMD rails s -b 0.0.0.0
