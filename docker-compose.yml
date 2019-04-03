@@ -1,3 +1,5 @@
+# https://nickjanetakis.com/blog/dockerize-a-rails-5-postgres-redis-sidekiq-action-cable-app-with-docker-compose
+
 version: '3'
 
 services:
@@ -35,7 +37,7 @@ services:
     volumes:
       - '.:/app'
     env_file:
-      - '.env'
+      - '.env.docker'
 
 volumes:
   redis:
