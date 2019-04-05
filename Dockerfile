@@ -1,6 +1,6 @@
 FROM ruby:2.5.3-alpine
 
-RUN apk update && apk add build-base nodejs postgresql-dev git tzdata yarn
+RUN apk update && apk add build-base nodejs postgresql-dev git tzdata less yarn
 
 WORKDIR /app
 
