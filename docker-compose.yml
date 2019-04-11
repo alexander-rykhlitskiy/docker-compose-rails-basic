@@ -1,5 +1,3 @@
-# https://nickjanetakis.com/blog/dockerize-a-rails-5-postgres-redis-sidekiq-action-cable-app-with-docker-compose
-
 version: '3'
 
 services:
@@ -30,6 +28,8 @@ services:
     env_file:
       - '.env.docker'
     user: $UID:$UID
+    stdin_open: true
+    tty: true
 
 
   sidekiq:
@@ -43,6 +43,8 @@ services:
     env_file:
       - '.env.docker'
     user: $UID:$UID
+    stdin_open: true
+    tty: true
 
 volumes:
   redis:
