@@ -29,6 +29,8 @@ services:
       - node-modules:/app/node_modules
     env_file:
       - '.env.docker'
+    user: $UID:$UID
+
 
   sidekiq:
     depends_on:
@@ -40,6 +42,7 @@ services:
       - '.:/app'
     env_file:
       - '.env.docker'
+    user: $UID:$UID
 
 volumes:
   redis:
