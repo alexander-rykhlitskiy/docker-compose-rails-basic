@@ -2,12 +2,11 @@
 
 ## Create files with current user as owner on Linux
 
-Use `UID` and `--user` flag on Linux as follows, so docker creates files with host user as the owner
+Use `UID` (or `--user` in run) flag on Linux as follows, so docker creates files with host user as the owner
 https://github.com/docker/compose/issues/1532
 
 ```bash
-UID=$(id -u) docker-compose up
-docker-compose run --user "$(id -u):$(id -g)" website touch test1
+UID=$(id -u) docker-compose run website bin/install
 ```
 
 ## Debugging with pry
@@ -19,7 +18,7 @@ docker attach $(docker-compose ps | grep website_1 | awk '{print $1}')
 ```
 2. Run server with this command instead of `docker-compose up`
 ```bash
-docker-compose run --user "$(id -u):$(id -g)" --use-aliases --service-ports website
+UID=$(id -u) docker-compose run --use-aliases --service-ports website
 ```
 
 ## Sources

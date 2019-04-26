@@ -23,8 +23,8 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - '.:/app'
-      - node-modules:/app/node_modules
+      - .:/app
+      - bundle_cache:/bundle
     env_file:
       - '.env.docker'
     user: $UID:$UID
@@ -49,4 +49,4 @@ services:
 volumes:
   redis:
   postgres:
-  node-modules:
+  bundle_cache:
