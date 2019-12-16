@@ -19,6 +19,7 @@ services:
     depends_on:
       - 'postgres'
       - 'redis'
+      - 'chrome'
     build: .
     ports:
       - '3000:3000'
@@ -30,7 +31,6 @@ services:
     user: $UID:$UID
     stdin_open: true
     tty: true
-
 
   sidekiq:
     depends_on:
@@ -45,6 +45,12 @@ services:
     user: $UID:$UID
     stdin_open: true
     tty: true
+
+  # for feature tests. See readme
+  chrome:
+    image: 'robcherry/docker-chromedriver:latest'
+    environment:
+      - CHROMEDRIVER_WHITELISTED_IPS=''
 
 volumes:
   redis:

@@ -12,6 +12,8 @@ end
 chdir APP_ROOT do
   puts '== Installing dependencies =='
   system! 'gem install bundler --conservative'
-  system!('bundle install') # we don't call `bundle check` to update Gemfile.lock
+  # we don't call `bundle check ||`, because it returns true if gem was removed.
+  # But we need to update Gemfile.lock in this case
+  system!('bundle install --jobs 4')
   system!('yarn install --check-files')
 end
